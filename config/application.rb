@@ -40,5 +40,8 @@ module EcommerceApi
     # I18n config
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}')]
     config.i18n.default_locale = :'pt-BR'
+
+    # Config validators
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
   end
 end
