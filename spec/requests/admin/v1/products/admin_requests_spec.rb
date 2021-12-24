@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Admin V1 Products as :admin", type: :request do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, profile: :admin) }
 
   context "GET /products" do
     let(:url) { "/admin/v1/products" }
@@ -443,12 +443,14 @@ RSpec.describe "Admin V1 Products as :admin", type: :request do
 end
 
 def build_game_product_json(product)
-  json = product.as_json(only: %i(id name description price status featured))
+  # json = product.as_json(only: %i(id name description price status featured))
+  json = product.as_json(only: %i(id name description price status))
+  json['categories'] = product.categories.map(&:name)
+  # json['categories'] = product.categories.as_json
   json['image_url'] = rails_blob_url(product.image)
   json['productable'] = product.productable_type.underscore
-  json['productable_id'] = product.productable_id
-  json['categories'] = product.categories.as_json
+  # json['productable_id'] = product.productable_id
   json.merge! product.productable.as_json(only: %i(mode release_date developer))
-  json['system_requirement'] = product.productable.system_requirement.as_json
-  json
+  # json['system_requirement'] = product.productable.system_requirement.as_json
+  # json
 end
