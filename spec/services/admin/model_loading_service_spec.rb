@@ -7,18 +7,22 @@ describe Admin::ModelLoadingService do
     context "when params are present" do
       let!(:search_system_requirements) do
         system_requirements = []
-        15.times { |n| system_requirements << create(:system_requirement, name: "Search #{n + 1}", video_board: "GeForce") }
+        15.times do |n| 
+          system_requirements << create(:system_requirement, name: "Search #{n + 1}", video_board: "GeForce")
+        end
         system_requirements
       end
 
-      let!(:not_search_system_requirements) do
+      let!(:unexpected_system_requirements) do
         system_requirements = []
-        15.times { |n| system_requirements << create(:system_requirement, name: "Search #{n + 16}") }
+        15.times do |n| 
+          system_requirements << create(:system_requirement, name: "Search #{n + 16}")
+        end
         system_requirements
       end
 
       let(:params) do
-        { search: { name: "Search", video_board: "GeF" }, order: { name: :desc }, page: 2, length: 4 }
+        { search: { name: "Search", video_board: "GeFor" }, order: { name: :desc }, page: 2, length: 4 }
       end
 
       it "performs right :length following pagination" do
@@ -59,11 +63,11 @@ describe Admin::ModelLoadingService do
         expect(service.pagination[:total_pages]).to eq 4
       end
 
-      it 'does not return not_search_system_requirements' do
-        params.merge!(page: 1, length: 100)
+      it "does not return unenexpected records" do
+        params.merge!(page: 1, length: 50)
         service = described_class.new(SystemRequirement.all, params)
         service.call
-        expect(service.records).to_not include *not_search_system_requirements
+        expect(service.records).to_not include *unexpected_system_requirements
       end
     end
 
