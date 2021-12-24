@@ -1,11 +1,13 @@
 module Admin::V1
   class SystemRequirementsController < ApiController
-    before_action :load_system_requirement, only: [:update, :destroy]
+    before_action :load_system_requirement, only: [:show, :update, :destroy]
 
     def index
       @loading_service = Admin::ModelLoadingService.new(SystemRequirement.all, searchable_params)
       @loading_service.call
     end
+
+    def show; end
 
     def create
       @system_requirement = SystemRequirement.new
