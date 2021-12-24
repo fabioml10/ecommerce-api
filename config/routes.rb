@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth/v1/user'
   mount LetterOpenerWeb::Engine, at: "/emails" if Rails.env.development?
 
-  namespace :admin do
+  namespace :admin, defaults: { format: :json } do
     namespace :v1 do
       get "home" => "home#index"
       resources :categories
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :games, only: [], shallow: true do
         resources :licenses
       end
+      resources :users
     end
   end
 
