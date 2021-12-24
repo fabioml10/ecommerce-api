@@ -1,4 +1,5 @@
 class Coupon < ApplicationRecord
+  include NameSearchable
   include Paginatable
 
   validates :name, presence: true
