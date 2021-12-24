@@ -62,4 +62,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.alias_it_behaves_like_to :it_has_behavior_of, 'has_behavior_of'
 end
