@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   namespace :admin, defaults: { format: :json } do
     namespace :v1 do
-      get "home" => "home#index"
       resources :categories
       resources :coupons
       resources :system_requirements
@@ -15,9 +14,10 @@ Rails.application.routes.draw do
       resources :users
     end
   end
-
+  
   namespace :storefront do
     namespace :v1 do
+      get "home" => "home#index"
     end
   end
 end
