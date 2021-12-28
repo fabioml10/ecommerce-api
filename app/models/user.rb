@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   include LikeSearchable
   include Paginatable
 
+  has_many :wish_items
+
   validates :name, presence: true
   validates :profile, presence: true
 
