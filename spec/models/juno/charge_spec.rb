@@ -13,4 +13,5 @@ RSpec.describe Juno::Charge, type: :model do
   it { is_expected.to validate_presence_of :status }
 
   it { is_expected.to belong_to :order }
+  it { is_expected.to have_many :credit_card_payments }
 end
