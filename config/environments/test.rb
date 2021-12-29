@@ -61,4 +61,7 @@ Rails.application.configure do
   # Juno config
   JUNO_AUTH_URL = "https://sandbox.boletobancario.com"
   JUNO_RESOURCE_URL = "https://sandbox.boletobancario.com/api-integration"
+
+  # Sidekiq config
+  config.active_job.queue_adapter = :test
 end

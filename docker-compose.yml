@@ -9,11 +9,12 @@ web:
     - "3001:3001"
   expose:
     - "3001"
-  environment:
-    - RAILS_ENV=development
-    - API_AUTHORIZATION=development
+  env_file:
+    - .env
   links:
     - db
+    - redis
+    - sidekiq
   volumes:
     - ".:/ecommerce-api"
 db:
@@ -23,3 +24,24 @@ db:
     POSTGRES_PASSWORD: password
   ports: ["5432:5432"]
   expose: ["5432"]
+
+redis:
+  image: redis:latest
+  command: redis-server
+  volumes:
+  - 'redis:/data'
+  env_file:
+    - .env
+  links:
+    - db
+
+sidekiq:
+  build: .
+  command: sidekiq
+  volumes:
+    - ".:/ecommerce-api"
+  env_file:
+    - .env
+  links:
+    - db
+    - redis

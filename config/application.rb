@@ -46,5 +46,8 @@ module EcommerceApi
 
     # Config validators
     config.autoload_paths += %W["#{config.root}/app/validators/"]
+
+    # Sidekiq config
+    config.active_job.queue_adapter = :sidekiq
   end
 end
