@@ -31,6 +31,9 @@ gem 'devise_token_auth'
 # Validation
 gem 'cpf_cnpj', '~> 0.5.0'
 
+# HTTP Request
+gem 'httparty', '~> 0.18.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -44,6 +47,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   # Database Cleaner is a set of gems containing strategies for cleaning your database in Ruby.
   gem 'database_cleaner'
+  #Shim to load environment variables from .env into ENV in development.
+  gem 'dotenv-rails'
 end
 
 group :development do
