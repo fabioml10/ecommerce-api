@@ -28,6 +28,9 @@ gem 'rack-cors'
 # Simple, multi-client and secure token-based authentication for Rails.
 gem 'devise_token_auth'
 
+# Validation
+gem 'cpf_cnpj', '~> 0.5.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
