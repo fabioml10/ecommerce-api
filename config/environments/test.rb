@@ -64,4 +64,7 @@ Rails.application.configure do
 
   # Sidekiq config
   config.active_job.queue_adapter = :test
+
+  config.action_mailer.default_url_options = { host: "http://localhost:3001" }
+  Rails.application.routes.default_url_options[:host] = "http://localhost:3001"
 end

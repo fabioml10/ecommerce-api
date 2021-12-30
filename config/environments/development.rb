@@ -74,4 +74,7 @@ Rails.application.configure do
 
   # Configure hosts
   config.hosts.clear
+
+  config.action_mailer.default_url_options = { host: "http://localhost:3001" }
+  Rails.application.routes.default_url_options[:host] = "http://localhost:3001"
 end
