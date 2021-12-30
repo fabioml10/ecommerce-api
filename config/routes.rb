@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       end
       resources :users
       resources :orders, only: [:index, :show]
+      namespace :dashboard do
+        resources :summaries, only: :index
+      end
     end
   end
   
