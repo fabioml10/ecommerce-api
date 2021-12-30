@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   include Paginatable
 
   has_many :wish_items
+  has_many :orders
 
   validates :name, presence: true
   validates :profile, presence: true
