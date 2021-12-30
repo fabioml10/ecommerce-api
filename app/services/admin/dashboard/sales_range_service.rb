@@ -24,7 +24,7 @@ module Admin::Dashboard
       records.map do |record|
         {
           date: record.first,
-          total_sold: record.second
+          total_sold: record.second.to_f
         }
       end
     end
