@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         resources :licenses
       end
       resources :users
+      resources :orders, only: [:index, :show]
     end
   end
   
