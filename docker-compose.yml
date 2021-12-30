@@ -37,7 +37,7 @@ redis:
 
 sidekiq:
   build: .
-  command: sidekiq
+  command: sidekiq -q default -q mailers
   volumes:
     - ".:/ecommerce-api"
   env_file:
