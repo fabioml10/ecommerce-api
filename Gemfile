@@ -37,6 +37,9 @@ gem 'httparty', '~> 0.18.1'
 # Simple, efficient background processing for Ruby.
 gem 'sidekiq'
 
+# Is an extension to Sidekiq that pushes jobs in a scheduled way, mimicking cron utility.
+gem "sidekiq-scheduler"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

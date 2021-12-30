@@ -1,6 +1,8 @@
+require 'sidekiq/web'
+require 'sidekiq-scheduler/web'
+
 Rails.application.routes.draw do
   # Configure Sidekiq-specific session middleware
-  require 'sidekiq/web'
   Sidekiq::Web.use ActionDispatch::Cookies
   Sidekiq::Web.use ActionDispatch::Session::CookieStore, key: "_interslice_session"
   EcommerceApi::Application.routes.draw do
