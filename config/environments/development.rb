@@ -71,4 +71,7 @@ Rails.application.configure do
   # Juno config
   JUNO_AUTH_URL = "https://sandbox.boletobancario.com"
   JUNO_RESOURCE_URL = "https://sandbox.boletobancario.com/api-integration"
+
+  # Configure hosts
+  config.hosts.clear
 end
